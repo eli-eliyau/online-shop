@@ -1,3 +1,4 @@
+import { tabsClasses,Tabs } from '@mui/material';
 import { styled } from '@mui/system';
 
 export const Container = styled('div')({
@@ -18,3 +19,12 @@ export const Button = styled('button')({
   border: 'none',
   cursor: 'pointer',
 });
+ 
+export const TabsS = styled(Tabs)({
+  [`& .${tabsClasses.scrollButtons}`]: {
+    "&.Mui-disabled": { opacity: 0.3 },
+  },
+  direction: "rtl",
+  background: "#edecec7a",
+  py: "1rem",
+})

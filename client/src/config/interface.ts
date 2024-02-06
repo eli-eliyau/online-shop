@@ -1,10 +1,10 @@
-export interface ITabs{
-    
+export interface ITabs {
+
         id: string,
         name: string,
         img: string,
-        products:string[]
-    
+        products: string[]
+
 }
 
 export interface IProducts {
@@ -13,6 +13,12 @@ export interface IProducts {
         img: string,
         prise: number;
         name: string;
-        locationBar:number
+        locationBar: number
 
-      }
+}
+
+export interface TabPanelProps {
+        children?: React.ReactNode;
+        index: number;
+        value: number;
+}

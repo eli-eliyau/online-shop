@@ -10,7 +10,7 @@ const Index = () => {
     <Routes>
       {/* <Route path="/" element={<Outlet />} /> */}
       <Route path="/" element={<Home />}>
-        <Route path="/categorys/:categoryID" element={<Category />} />
+        <Route path="/categorys/:categoryID"  />
         {/* <Route path="/categorys" element={<Cards data={category} />} /> */}
       </Route>
       {/* <Route index element={<Home />} /> */}

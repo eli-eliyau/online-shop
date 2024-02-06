@@ -4,7 +4,7 @@ export interface ICart {
     id:string
     categoryId:string |undefined
     productId:string
-    amount:number
+    quantity:number
 }
 
 

@@ -6,13 +6,13 @@ import {
   CardContent,
   CardMedia,
   Box,
+  Card,
 } from "@mui/material";
-import { GridContainerS, StyledButtonWrapper } from "./StyleCards";
-import { useNavigate } from "react-router-dom";
-import BasicSpeedDial from "../plus/PlaygroundSpeedDial";
+import { GridContainer, StyledButtonWrapper } from "./StyleCards";
 import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
 import { cart } from "../../atom";
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 
 interface IProps {
   data: {
@@ -25,17 +25,18 @@ interface IProps {
 }
 
 const Cards = ({ data }: IProps) => {
-  const navigate = useNavigate();
   const pushCart = useSetRecoilState(cart);
   const [index, setIndex] = useState(0);
 
-  const addCart = (amount: number) => {
+  const addCart = (quantity: number) => {
+    console.log(quantity);
+
     if (data[index].categoryId) {
       const newProduct = {
         id: Math.floor(Math.random() * 1000000).toString(),
         categoryId: data[index].categoryId,
         productId: data[index].id,
-        amount,
+        quantity,
       };
       pushCart((prevCart) => [...prevCart, newProduct]);
     }
@@ -43,13 +44,19 @@ const Cards = ({ data }: IProps) => {
 
   const handleCategoryClick = (id: string, i: number) => {
     setIndex(i);
-    navigate(`/categorys/:${id}`);
   };
 
   return (
     <Grid container spacing={2}>
       {data.map((e, i) => (
-        <GridContainerS item xs={12} sm={4} md={3} key={i}>
+        <GridContainer
+          item
+          xs={12}
+          sm={4}
+          md={3}
+          key={i}
+        >
+          <Card style={{background:"#edecebc5"}}>
           <StyledButtonWrapper onClick={() => handleCategoryClick(e.id, i)}>
             <CardMedia
               component="img"
@@ -62,19 +69,29 @@ const Cards = ({ data }: IProps) => {
               }}
               src={`data:image/png;base64,${e.img}`}
             />
-            <CardContent>
-              <Box display="flex" justifyContent="space-between">
+            {/* <CardContent> */}
+              <Grid
+                container
+                direction="row"
+                justifyContent="space-around"
+                alignItems="center"
+                sx={{pt:2}}
+              >
                 <Typography variant="h5" textAlign="center">
                   {e.name}
                 </Typography>
-                <Typography variant="h5" textAlign="center">
-                  {`${e.price} $`}
-                </Typography>
-              </Box>
-              <QuantitySelection amount={addCart} />
-            </CardContent>
+                
+                {data[0].categoryId && (
+                  <Typography variant="h5" textAlign="center">
+                    {`${e.price} $`}
+                  </Typography>
+                )}
+              </Grid>
+            {/* </CardContent> */}
           </StyledButtonWrapper>
-        </GridContainerS>
+          {data[0].categoryId && <QuantitySelection quantity={addCart} />}
+          </Card>
+        </GridContainer>
       ))}
     </Grid>
   );

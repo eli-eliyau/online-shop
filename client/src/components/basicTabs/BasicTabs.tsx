@@ -1,20 +1,15 @@
 import * as React from "react";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Container } from "@mui/material";
-import { categoriesProducts, category } from "../../config/card";
 import Cards from "../../components/cards/Cards";
-import { IProducts, ITabs } from "../../config/interface";
+import { IProducts, ITabs, TabPanelProps } from "../../config/interface";
 import axios from "axios";
 import { API_SERVER } from "../../App";
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
+import { useNavigate } from "react-router-dom";
+import { TabsS } from "./BasicTabsStyles";
+import BasicPagination from "../basicPagination/BasicPagination";
 
 const CustomTabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
@@ -41,8 +36,10 @@ const BasicTabs = () => {
   const [tabs, setTabs] = React.useState<ITabs[]>();
   const [products, setProducts] = React.useState<IProducts[]>();
   const isMounted = React.useRef(true);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
+    navigate("/");
     if (isMounted.current) {
       axios
         .get(`${API_SERVER}/getCategoryTabs`)
@@ -55,6 +52,8 @@ const BasicTabs = () => {
   }, []);
 
   const handleTabClick = (id: string) => {
+    navigate(`/categorys/:${id}`);
+
     axios
       .post(`${API_SERVER}/getCategoryProducts`, { categoryId: id })
       .then((res) => {
@@ -66,26 +65,6 @@ const BasicTabs = () => {
       });
     console.log(`Tab ${id} נלחץ`);
   };
-  const a11yProps = (id: string) => {
-    const handleTabClick = () => {
-      axios
-        .post(`${API_SERVER}/getCategoryProducts`, { categoryId: id })
-        .then((res) => {
-          res.data && setProducts(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log(`Tab ${id} נלחץ`);
-    };
-
-    return {
-      id: `simple-tab-${id}`,
-      "aria-controls": `simple-tabpanel-${id}`,
-      onClick: handleTabClick,
-    };
-  };
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -94,22 +73,19 @@ const BasicTabs = () => {
   return (
     <Container>
       <Box sx={{ width: "100%" }}>
-        <Tabs
+        <TabsS
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
           variant="scrollable"
           scrollButtons
-          sx={{
-            [`& .${tabsClasses.scrollButtons}`]: {
-              "&.Mui-disabled": { opacity: 0.3 },
-            },
-            direction: "rtl",
-            background: "#edecec7a",
-            py: "1rem",
-          }}
         >
-          <Tab label="תראה לי הכל" />
+          <Tab
+            label="תראה לי הכל"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
           {tabs?.map((e, i) => (
             <Tab
               label={`${e.name}`}
@@ -117,7 +93,7 @@ const BasicTabs = () => {
               onClick={() => handleTabClick(e.id)}
             />
           ))}
-        </Tabs>
+        </TabsS>
         <h1>מכירת מוצרים</h1>
         <CustomTabPanel value={value} index={value}>
           {tabs && value === 0 ? (
@@ -127,6 +103,8 @@ const BasicTabs = () => {
           ) : (
             <h1>אין מה להציג</h1>
           )}
+        <BasicPagination />
+
         </CustomTabPanel>
       </Box>
     </Container>

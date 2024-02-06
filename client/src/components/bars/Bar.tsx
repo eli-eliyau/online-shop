@@ -1,27 +1,19 @@
 import React from "react";
-import {
-  AppBar,
-  Container,
-  Grid,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Container, Grid, Toolbar, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Logo from "../../assets/logo.png";
 import CartButton from "../buttons/CartButton";
 import SearchInput from "./SearchInput";
-import { cartButton } from "../../config/buttons";
-import BasicTabs from "../basicTabs/BasicTabs";
 import { useRecoilValue } from "recoil";
 import { cart } from "../../atom";
 
 const Bar = () => {
-  let quantityProducts=0
-  const getCart =useRecoilValue(cart)
-  
-      getCart.forEach(element => {
-    quantityProducts+=element.amount
-   })
+  let quantityProducts = 0;
+  const getCart = useRecoilValue(cart);
+
+  getCart.forEach((element) => {
+    quantityProducts += element.quantity;
+  });
 
   return (
     <StyledAppBar>
@@ -42,8 +34,6 @@ const Bar = () => {
           </Grid>
         </Toolbar>
       </Container>
-    
-
     </StyledAppBar>
   );
 };

@@ -23,7 +23,7 @@ const CartButton = ({ cartItems }:CartButtonProps) => {
 
   return (
     <IconButton color="inherit"  size="large"  sx={{background:'#a71f1f'}}>
-      <Badge badgeContent={cartItems} color="error">
+      <Badge badgeContent={cartItems} color="error" max={1000}>
         <ShoppingCartIcon />
       </Badge>
     </IconButton>

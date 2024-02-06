@@ -10,9 +10,6 @@ import Cards from "../../components/cards/Cards";
 import { category } from "../../config/card";
 
 const Home = () => {
-  
-
- 
   return (
     <Box>
       <Bar />
@@ -20,9 +17,7 @@ const Home = () => {
 
       <Container>
         <Outlet />
-
         <PlaygroundSpeedDial />
-        <BasicPagination />
         <Footer />
       </Container>
     </Box>
