@@ -6,12 +6,13 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import { Grid } from "@mui/material";
 
 interface IProps {
-  quantity: Function;
+  onQuantity: Function;
 }
 
-const QuantitySelection = ({ quantity }: IProps) => {
+const QuantitySelection = ({ onQuantity }: IProps) => {
   const [count, setCount] = React.useState(0);
 
   return (
@@ -21,50 +22,54 @@ const QuantitySelection = ({ quantity }: IProps) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 2,
-        mb: 2,
-
-        
-       
+        mt: 1,
+        mb: 1,
       }}
     >
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ p: 1 }}
+      >
+        <Button
+          aria-label="reduce"
+          onClick={() => {
+            setCount(Math.max(count - 1, 0));
+            // quantity(Math.max(count - 1, 0));
+          }}
+        >
+          <RemoveIcon fontSize="small" />
+        </Button>
         <Badge
           color="secondary"
           badgeContent={count}
           showZero={false}
-          sx={{ pb: 1 }}
+          sx={{ p: 1 }}
         >
           <ProductionQuantityLimitsIcon />
         </Badge>
-        <ButtonGroup>
-          <Button
-            aria-label="reduce"
-            onClick={() => {
-              setCount(Math.max(count - 1, 0));
-              quantity(Math.max(count - 1, 0));
-            }}
-          >
-            <RemoveIcon fontSize="small" />
-          </Button>
-          <Button
-            aria-label="increase"
-            onClick={() => {
-              setCount(count + 1);
-              quantity(count + 1);
-            }}
-          >
-            <AddIcon fontSize="small" />
-          </Button>
-          <Button
-            aria-label="increase"
-            onClick={() => {          
-              quantity(count);
-              setCount(0)
-            }}
-          >
-            הוסף לסל
-          </Button>
-        </ButtonGroup>
+        <Button
+          aria-label="increase"
+          onClick={() => {
+            setCount(count + 1);
+            // quantity(count + 1);
+          }}
+        >
+          <AddIcon fontSize="small" />
+        </Button>
+      </Grid>
+      <Button
+        variant="outlined"
+        aria-label="increase"
+        onClick={() => {
+          onQuantity(count);
+          setCount(0);
+        }}
+      >
+        הוסף לסל
+      </Button>
     </Box>
   );
 };

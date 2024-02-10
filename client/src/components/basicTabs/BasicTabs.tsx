@@ -7,7 +7,7 @@ import Cards from "../../components/cards/Cards";
 import { IProducts, ITabs, TabPanelProps } from "../../config/interface";
 import axios from "axios";
 import { API_SERVER } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TabsS } from "./BasicTabsStyles";
 import BasicPagination from "../basicPagination/BasicPagination";
 
@@ -35,8 +35,10 @@ const BasicTabs = () => {
   const [value, setValue] = React.useState(0);
   const [tabs, setTabs] = React.useState<ITabs[]>();
   const [products, setProducts] = React.useState<IProducts[]>();
+  const [products2, setProduct2] = React.useState<string>();
   const isMounted = React.useRef(true);
   const navigate = useNavigate();
+  const {categoryID} = useParams()
 
   React.useEffect(() => {
     navigate("/");
@@ -50,19 +52,28 @@ const BasicTabs = () => {
       isMounted.current = false;
     }
   }, []);
-
-  const handleTabClick = (id: string) => {
-    navigate(`/categorys/:${id}`);
-
+  React.useEffect(()=>{
+    const cleanId = categoryID?.split(':')[1];
     axios
-      .post(`${API_SERVER}/getCategoryProducts`, { categoryId: id })
+      .post(`${API_SERVER}/getCategoryProducts`, { categoryId: cleanId })
       .then((res) => {
         res.data && setProducts(res.data);
+
         console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
+  },[categoryID])
+
+const g = (v:number)=>{
+  setValue(v);
+
+}
+  const handleTabClick = (id: string,index?:number  ) => {
+    navigate(`/categorys/:${id}`);
+
+    
     console.log(`Tab ${id} נלחץ`);
   };
 
@@ -90,14 +101,19 @@ const BasicTabs = () => {
             <Tab
               label={`${e.name}`}
               key={i}
-              onClick={() => handleTabClick(e.id)}
+              onClick={() => {
+
+                handleTabClick(e.id,i)
+
+              }
+              }
             />
           ))}
         </TabsS>
         <h1>מכירת מוצרים</h1>
         <CustomTabPanel value={value} index={value}>
           {tabs && value === 0 ? (
-            <Cards data={tabs} />
+            <Cards data={tabs} onTabs={g}/>
           ) : products ? (
             <Cards data={products} />
           ) : (

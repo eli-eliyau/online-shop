@@ -13,8 +13,10 @@ import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
 import { cart } from "../../atom";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
+  onTabs?:Function
   data: {
     id: string;
     name: string;
@@ -24,14 +26,19 @@ interface IProps {
   }[];
 }
 
-const Cards = ({ data }: IProps) => {
+const Cards = ({ data,onTabs }: IProps) => {
+  // console.log(data);
+  
   const pushCart = useSetRecoilState(cart);
+  const navigate = useNavigate()
   const [index, setIndex] = useState(0);
 
-  const addCart = (quantity: number) => {
-    console.log(quantity);
 
-    if (data[index].categoryId) {
+  
+  const addCart = (quantity: number) => {
+    console.log(data[index].categoryId);
+
+    if ( data[index].categoryId) {
       const newProduct = {
         id: Math.floor(Math.random() * 1000000).toString(),
         categoryId: data[index].categoryId,
@@ -43,7 +50,9 @@ const Cards = ({ data }: IProps) => {
   };
 
   const handleCategoryClick = (id: string, i: number) => {
+    navigate(`/categorys/:${id}`);
     setIndex(i);
+    onTabs &&  onTabs(i+1)
   };
 
   return (
@@ -89,7 +98,7 @@ const Cards = ({ data }: IProps) => {
               </Grid>
             {/* </CardContent> */}
           </StyledButtonWrapper>
-          {data[0].categoryId && <QuantitySelection quantity={addCart} />}
+          {data[0].categoryId && <QuantitySelection onQuantity={addCart} />}
           </Card>
         </GridContainer>
       ))}
