@@ -1,4 +1,4 @@
-export interface ITabs {
+export interface ICategory {
 
         id: string,
         name: string,
@@ -11,7 +11,7 @@ export interface IProducts {
         id: string;
         categoryId: string;
         img: string,
-        prise: number;
+        price: number;
         name: string;
         locationBar: number
 

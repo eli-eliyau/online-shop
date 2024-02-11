@@ -27,6 +27,7 @@ export const StyledCard = styled(Card)({
 });
 
 export const StyledButtonWrapper = styled(Button)({
+  margin: '0px',
   width: "100%",
   textTransform: "none",
   display: "flex",
