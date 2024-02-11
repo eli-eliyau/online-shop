@@ -54,6 +54,7 @@ const Cards2 = ({ data }: IProps) => {
             height: "auto",
             width: '100%',
           }}
+          
           src={`data:image/png;base64,${data.img}`}
         />
         <Grid
