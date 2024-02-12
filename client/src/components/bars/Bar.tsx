@@ -39,8 +39,8 @@ const Bar = () => {
 };
 
 const StyledAppBar = styled(AppBar)`
-  position: sticky;
-  background: rgba(253, 239, 205, 0.676);
+  position: fixed;
+  background: rgb(253, 239, 205);
   box-shadow: 0px 5px 10px rgb(255, 255, 255);
 `;
 

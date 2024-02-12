@@ -17,12 +17,10 @@ import { useNavigate } from "react-router-dom";
 import { ICategory, IProducts } from "../../config/interface";
 
 interface IProps {
-
   data: ICategory | IProducts;
 }
 
 const Cards2 = ({ data }: IProps) => {
-
   const pushCart = useSetRecoilState(cart);
   const navigate = useNavigate();
 
@@ -39,22 +37,21 @@ const Cards2 = ({ data }: IProps) => {
   };
 
   const handleCategoryClick = (id: string) => {
-    navigate(`/categorys/:${id}`);
+    !("categoryId" in data) && navigate(`/categorys/:${id}`);
   };
 
   return (
-    <Box sx={{  borderRadius: "15px",background: "#edecebc5" ,height:'100%' }}>
-      <Box  onClick={() => handleCategoryClick(data.id)}>
+    <Box sx={{ borderRadius: "15px", background: "#edecebc5", height: "100%" }}>
+      <Box onClick={() => handleCategoryClick(data.id)}>
         <CardMedia
           component="img"
           alt="תיאור תמונה"
           sx={{
             objectFit: "cover",
-            borderRadius: "15px",
+            borderRadius: "15px 15px 0px 0px",
             height: "auto",
-            width: '100%',
+            width: "100%",
           }}
-          
           src={`data:image/png;base64,${data.img}`}
         />
         <Grid

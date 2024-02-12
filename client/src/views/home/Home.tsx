@@ -1,26 +1,29 @@
 import React from "react";
 import Bar from "../../components/bars/Bar";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import PlaygroundSpeedDial from "../../components/plus/PlaygroundSpeedDial";
 import BasicPagination from "../../components/basicPagination/BasicPagination";
-import BasicTabs from "../../components/basicTabs/BasicTabs";
+import BasicTabs, { imges } from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
 import Cards from "../../components/cards/Cards";
 import { category } from "../../config/card";
+import ImageCarousel from "../../components/cards/ImageCarousel";
 
 const Home = () => {
-  return (
+  return (<>
+    
     <Box>
-      <Bar />
+    <Bar />
       <BasicTabs />
-
+     
       <Container>
         <Outlet />
         <PlaygroundSpeedDial />
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </Box>
+    </>
   );
 };
 
