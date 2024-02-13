@@ -28,7 +28,7 @@ const ImageCarousel = ({ images, interval }: IProps) => {
   }, [images, interval]);
 
   return (
-    <Box sx={{ position: 'relative', mt: 2, overflow: 'hidden',height:{
+    <Box sx={{ position: 'relative', overflow: 'hidden',height:{
         xs:'70%',
         sm:'50%',
         md:'100%'

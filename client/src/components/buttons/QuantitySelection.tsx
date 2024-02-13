@@ -37,7 +37,6 @@ const QuantitySelection = ({ onQuantity }: IProps) => {
           aria-label="reduce"
           onClick={() => {
             setCount(Math.max(count - 1, 0));
-            // quantity(Math.max(count - 1, 0));
           }}
         >
           <RemoveIcon fontSize="small" />
@@ -54,7 +53,6 @@ const QuantitySelection = ({ onQuantity }: IProps) => {
           aria-label="increase"
           onClick={() => {
             setCount(count + 1);
-            // quantity(count + 1);
           }}
         >
           <AddIcon fontSize="small" />

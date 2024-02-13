@@ -21,11 +21,12 @@ export const Button = styled('button')({
 });
  
 export const TabsS = styled(Tabs)({
-  // position:'fixed',
   [`& .${tabsClasses.scrollButtons}`]: {
-    "&.Mui-disabled": { opacity: 0.3 },
+    "&.Mui-disabled": { opacity: 1 },
+    color:'red'
   },
   direction: "rtl",
-  background: "#f0f0f0",
   py: "1rem",
+ 
+  
 })

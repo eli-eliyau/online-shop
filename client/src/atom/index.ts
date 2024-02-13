@@ -10,5 +10,15 @@ export interface ICart {
 
 export const cart = atom<ICart[]>({
     key: 'cart',
-    default: [],
+    default: [
+      
+     
+    ],
+  });
+
+
+  
+export const indexTab = atom<number>({
+    key: 'indexTab',
+    default: 0,
   });

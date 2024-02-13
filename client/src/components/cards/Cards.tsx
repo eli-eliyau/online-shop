@@ -1,108 +1,77 @@
-import React, { useState } from "react";
-import {
-  Typography,
-  Grid,
-  Divider,
-  CardContent,
-  CardMedia,
-  Box,
-  Card,
-} from "@mui/material";
-import { GridContainer, StyledButtonWrapper } from "./StyleCards";
+import React from "react";
+import { Typography, Grid, CardMedia, Box } from "@mui/material";
 import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
 import { cart } from "../../atom";
-import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { useNavigate } from "react-router-dom";
+import { ICategory, IProducts } from "../../config/interface";
 
 interface IProps {
-  onTabs?:Function
-  data: {
-    id: string;
-    name: string;
-    img: string;
-    categoryId?: string;
-    price?: number;
-  }[];
+  data: ICategory | IProducts;
 }
 
-const Cards = ({ data,onTabs }: IProps) => {
-  // console.log(data);
-  
-  const pushCart = useSetRecoilState(cart);
-  const navigate = useNavigate()
-  const [index, setIndex] = useState(0);
+const Cards = ({ data }: IProps) => {
+  const setPushCart = useSetRecoilState(cart);
+  const navigate = useNavigate();
 
-
-  
   const addCart = (quantity: number) => {
-    console.log(data[index].categoryId);
-
-    if ( data[index].categoryId) {
+    if ("categoryId" in data) {
       const newProduct = {
         id: Math.floor(Math.random() * 1000000).toString(),
-        categoryId: data[index].categoryId,
-        productId: data[index].id,
+        categoryId: data.categoryId,
+        productId: data.id,
         quantity,
       };
-      pushCart((prevCart) => [...prevCart, newProduct]);
+
+      setPushCart((prevCart) => {
+        if (Array.isArray(prevCart)) {
+          return [...prevCart, newProduct];
+        } else {
+          console.error("prevCart is not an array");
+          return prevCart;
+        }
+      });
     }
   };
 
-  const handleCategoryClick = (id: string, i: number) => {
-    navigate(`/categorys/:${id}`);
-    setIndex(i);
-    onTabs &&  onTabs(i+1)
+  const handleCategoryClick = (id: string) => {
+    !("categoryId" in data) && navigate(`/categorys/:${id}`);
   };
 
   return (
-    <Grid container spacing={2}>
-      {data.map((e, i) => (
-        <GridContainer
-          item
-          xs={12}
-          sm={4}
-          md={3}
-          key={i}
+    <Box sx={{ borderRadius: "15px", background: "#edecebc5", height: "100%" }}>
+      <Box onClick={() => handleCategoryClick(data.id)}>
+        <CardMedia
+          component="img"
+          alt="תיאור תמונה"
+          sx={{
+            objectFit: "cover",
+            borderRadius: "15px 15px 0px 0px",
+            height: "auto",
+            width: "100%",
+          }}
+          src={`data:image/png;base64,${data.img}`}
+        />
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center"
+          sx={{ pt: 2 }}
         >
-          <Card style={{background:"#edecebc5"}}>
-          <StyledButtonWrapper onClick={() => handleCategoryClick(e.id, i)}>
-            <CardMedia
-              component="img"
-              alt="תיאור תמונה"
-              sx={{
-                objectFit: "cover",
-                borderRadius: "5%",
-                height: "auto",
-                width: 100,
-              }}
-              src={`data:image/png;base64,${e.img}`}
-            />
-            {/* <CardContent> */}
-              <Grid
-                container
-                direction="row"
-                justifyContent="space-around"
-                alignItems="center"
-                sx={{pt:2}}
-              >
-                <Typography variant="h5" textAlign="center">
-                  {e.name}
-                </Typography>
-                
-                {data[0].categoryId && (
-                  <Typography variant="h5" textAlign="center">
-                    {`${e.price} $`}
-                  </Typography>
-                )}
-              </Grid>
-            {/* </CardContent> */}
-          </StyledButtonWrapper>
-          {data[0].categoryId && <QuantitySelection onQuantity={addCart} />}
-          </Card>
-        </GridContainer>
-      ))}
-    </Grid>
+          <Typography variant="h5" textAlign="center">
+            {data.name}
+          </Typography>
+
+          {"price" in data && (
+            <Typography variant="h5" textAlign="center">
+              {`${data.price} $`}
+            </Typography>
+          )}
+        </Grid>
+      </Box>
+      {"categoryId" in data && <QuantitySelection onQuantity={addCart} />}
+    </Box>
   );
 };
 

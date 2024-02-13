@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Container, Grid, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Container, Grid, Toolbar, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Logo from "../../assets/logo.png";
 import CartButton from "../buttons/CartButton";
@@ -10,16 +10,20 @@ import { cart } from "../../atom";
 const Bar = () => {
   let quantityProducts = 0;
   const getCart = useRecoilValue(cart);
+console.log(getCart);
 
-  getCart.forEach((element) => {
+  getCart?.forEach((element) => {
     quantityProducts += element.quantity;
   });
 
   return (
-    <StyledAppBar>
+    <Box sx={{
+  background: "rgb(253, 239, 205)"
+
+    }}>
       <Container>
         <Toolbar>
-          <Grid container alignItems="center" justifyContent="space-between">
+          <Grid container alignItems="center" justifyContent="space-between" >
             <Grid item xs={3} md={4}>
               <SearchInput />
             </Grid>
@@ -34,13 +38,13 @@ const Bar = () => {
           </Grid>
         </Toolbar>
       </Container>
-    </StyledAppBar>
+     </Box>
   );
 };
 
-const StyledAppBar = styled(AppBar)`
-  position: fixed;
-  background: rgb(253, 239, 205);
+export const StyledAppBar = styled(AppBar)`
+  /* position: fixed; */
+  background: rgb(255, 255, 255);
   box-shadow: 0px 5px 10px rgb(255, 255, 255);
 `;
 
