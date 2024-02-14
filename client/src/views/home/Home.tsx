@@ -2,12 +2,10 @@ import React from "react";
 import Bar, { StyledAppBar } from "../../components/bars/Bar";
 import { Box, Container, Grid } from "@mui/material";
 import PlaygroundSpeedDial from "../../components/plus/PlaygroundSpeedDial";
-import BasicPagination from "../../components/basicPagination/BasicPagination";
 import BasicTabs from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
-import Cards from "../../components/cards/Cards";
-import { category } from "../../config/card";
+
 import ImageCarousel from "../../components/cards/ImageCarousel";
 
 export const imges = [
@@ -31,15 +29,19 @@ const Home = () => {
           justifyContent="center"
           alignItems="center"
           width={"100%"}
-          height={"40%"}
-          sx={{ mb: 2, mt: 2 }}
+          sx={{ mb: 2, mt: 2,
+            height:{
+              xs:'50%',
+              sm:'60%'
+            }
+          }}
         >
           <ImageCarousel images={imges} interval={3000} />
         </Grid>
         <Container>
           <Outlet />
           <PlaygroundSpeedDial />
-          {/* <Footer /> */}
+          <Footer />
         </Container>
       </Box>
     </Box>

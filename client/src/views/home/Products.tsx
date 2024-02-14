@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_SERVER } from "../../App";
 import { GridContainer } from "../../components/cards/StyleCards";
-import Cards2 from "../../components/cards/Cards";
+import Cards from "../../components/cards/Cards";
 
 const Products = () => {
   const [products, setProducts] = React.useState<IProducts[]>();
@@ -18,7 +18,6 @@ const Products = () => {
         .post(`${API_SERVER}/getCategoryProducts`, { categoryId: cleanId })
         .then((res) => {
           res.data && setProducts(res.data);
-            console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -32,7 +31,7 @@ const Products = () => {
       <Grid container spacing={2}>
         {products?.map((e, i) => (
           <GridContainer item xs={12} sm={4} md={3} key={i}>
-            <Cards2 data={e} />
+            <Cards data={e} />
           </GridContainer>
         ))}
       </Grid>

@@ -55,7 +55,7 @@ const ImageCarousel = ({ images, interval }: IProps) => {
           sx={{
             zIndex:-1,
             objectFit: "cover",
-            borderRadius: "15px 15px 0px 0px",
+            borderRadius: "15px 15px 15px 15px",
             // display: 'block',
             maxWidth: '100%',
             // width:'100%',

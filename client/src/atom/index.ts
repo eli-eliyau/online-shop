@@ -1,24 +1,23 @@
 import { atom } from "recoil";
 
 export interface ICart {
-    id:string
-    categoryId:string |undefined
-    productId:string
-    quantity:number
+  id: string
+  name:string
+  img:string
+  categoryId: string | undefined
+  productId: string
+  price:number
+  quantity: number
 }
 
 
 export const cart = atom<ICart[]>({
-    key: 'cart',
-    default: [
-      
-     
-    ],
-  });
+  key: 'cart',
+  default: [],
+});
 
 
-  
 export const indexTab = atom<number>({
-    key: 'indexTab',
-    default: 0,
-  });
+  key: 'indexTab',
+  default: 0,
+});

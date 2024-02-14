@@ -2,12 +2,12 @@ import React from "react";
 import { Typography, Grid, CardMedia, Box } from "@mui/material";
 import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
-import { cart } from "../../atom";
+import { ICart, cart } from "../../atom";
 import { useNavigate } from "react-router-dom";
 import { ICategory, IProducts } from "../../config/interface";
 
 interface IProps {
-  data: ICategory | IProducts;
+  data: ICategory | IProducts | ICart;
 }
 
 const Cards = ({ data }: IProps) => {
@@ -15,11 +15,14 @@ const Cards = ({ data }: IProps) => {
   const navigate = useNavigate();
 
   const addCart = (quantity: number) => {
-    if ("categoryId" in data) {
+    if ("nameCategory" in data) {
       const newProduct = {
         id: Math.floor(Math.random() * 1000000).toString(),
+        name: data.name,
+        img: data.img,
         categoryId: data.categoryId,
         productId: data.id,
+        price:data.price,
         quantity,
       };
 
@@ -31,6 +34,13 @@ const Cards = ({ data }: IProps) => {
           return prevCart;
         }
       });
+    }
+    else if("quantity" in data){
+      setPushCart((prevCart) =>
+    prevCart.map((product) =>
+      product.id === data.id ? { ...product, quantity: quantity } : product
+    )
+  );
     }
   };
 
@@ -70,7 +80,15 @@ const Cards = ({ data }: IProps) => {
           )}
         </Grid>
       </Box>
-      {"categoryId" in data && <QuantitySelection onQuantity={addCart} />}
+      { "nameCategory" in data  && 
+        <QuantitySelection onQuantity={addCart}  />      
+    }
+    {
+      "quantity" in data && 
+      <QuantitySelection onQuantity={addCart} quantity={data.quantity} />      
+
+
+    }
     </Box>
   );
 };

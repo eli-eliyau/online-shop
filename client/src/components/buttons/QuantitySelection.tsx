@@ -9,11 +9,13 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import { Grid } from "@mui/material";
 
 interface IProps {
-  onQuantity: Function;
+  onQuantity:any;
+  quantity?: number;
 }
 
-const QuantitySelection = ({ onQuantity }: IProps) => {
-  const [count, setCount] = React.useState(0);
+const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
+  const [count, setCount] = React.useState(quantity ? quantity : 0);
+console.log(quantity);
 
   return (
     <Box
@@ -62,11 +64,11 @@ const QuantitySelection = ({ onQuantity }: IProps) => {
         variant="outlined"
         aria-label="increase"
         onClick={() => {
-          onQuantity(count);
-          setCount(0);
+          count > 0 && onQuantity(count)
+          quantity  ? setCount(count) : setCount(0)
         }}
       >
-        הוסף לסל
+        {quantity ? "שמור שינוי" : "הוסף לסל"}
       </Button>
     </Box>
   );
