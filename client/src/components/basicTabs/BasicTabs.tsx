@@ -44,12 +44,14 @@ const BasicTabs = () => {
       aria-label="basic tabs example"
       variant="scrollable"
       scrollButtons="auto"
+      
     >
       <Tab
         label="תראה לי הכל"
         onClick={() => {
           navigate("/categorys");
         }}
+       
       />
       {tabs?.map((e, i) => (
         <Tab

@@ -14,7 +14,7 @@ const CartButton = ({ cartItems }: CartButtonProps) => {
     <IconButton
       color="inherit"
       size="large"
-      sx={{ background: "#a71f1f" }}
+      sx={{ background: "#e63946" }}
       onClick={() => navigate("/cart")}
     >
       <Badge badgeContent={cartItems} color="error" max={1000}>

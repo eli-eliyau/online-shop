@@ -1,4 +1,4 @@
-import { tabsClasses,Tabs } from '@mui/material';
+import { tabsClasses, Tabs } from '@mui/material';
 import { styled } from '@mui/system';
 
 export const Container = styled('div')({
@@ -19,14 +19,24 @@ export const Button = styled('button')({
   border: 'none',
   cursor: 'pointer',
 });
- 
+
 export const TabsS = styled(Tabs)({
   [`& .${tabsClasses.scrollButtons}`]: {
     "&.Mui-disabled": { opacity: 1 },
-    color:'red'
+    color:"#1d3557"
+  },
+  "& .MuiTab-root.Mui-selected": {
+    color: "#e63946", // צבע הטקסט כאשר התווית נבחרת
+  },
+  "& .MuiTabs-indicator": {
+    background: "#e63946", // צבע הקן התחתון כאשר התווית נבחרת
+  },
+  "& .MuiTab-root": {
+    color: "#1d3557", // צבע הטקסט כאשר התווית לא נבחרת
   },
   direction: "rtl",
-  py: "1rem",
- 
-  
+  color: '#e63946',
+
+
+
 })

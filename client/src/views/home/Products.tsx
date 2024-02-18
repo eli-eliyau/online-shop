@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { IProducts } from "../../config/interface";
 import { useParams } from "react-router-dom";
@@ -25,7 +25,7 @@ const Products = () => {
   }, [categoryID]);
   
   return (
-    <div>
+    <Box  >
       <h1>{`${products?.[0]?.nameCategory}`}</h1>
 
       <Grid container spacing={2}>
@@ -35,7 +35,7 @@ const Products = () => {
           </GridContainer>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 

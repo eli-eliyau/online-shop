@@ -16,33 +16,37 @@ export const imges = [
 
 const Home = () => {
   return (
-    <Box  sx={{ height: "100vh" }}>
+    <Box sx={{ height: "100vh" }}>
       <StyledAppBar>
         <Bar />
         <BasicTabs />
       </StyledAppBar>
-      <Box sx={{ mt: 22, height: "90%" }}>
-      
+      <Box sx={{ mt: 19, height: "100%" }}>
         <Grid
           container
           direction="row"
           justifyContent="center"
           alignItems="center"
           width={"100%"}
-          sx={{ mb: 2, mt: 2,
-            height:{
-              xs:'50%',
-              sm:'60%'
-            }
+          sx={{
+            pt: 2,
+            height: {
+              xs: "50%",
+              sm: "60%",
+            },
+            background: "#1d3557",
           }}
         >
           <ImageCarousel images={imges} interval={3000} />
         </Grid>
-        <Container>
-          <Outlet />
-          <PlaygroundSpeedDial />
+        <Box sx={{ background: "#f1faee0" }}>
+          <Container>
+            <Outlet />
+            <PlaygroundSpeedDial />
+          </Container>
           <Footer />
-        </Container>
+
+        </Box>
       </Box>
     </Box>
   );

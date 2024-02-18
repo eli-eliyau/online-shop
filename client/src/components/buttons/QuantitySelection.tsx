@@ -56,6 +56,14 @@ console.log(quantity);
           onClick={() => {
             setCount(count + 1);
           }}
+          sx={{
+            "& .MuiTab-root.Mui-selected": {
+              color: "#3950e6", // צבע הטקסט כאשר התווית נבחרת
+            },
+           
+         
+            color: "#e63946"
+          }}
         >
           <AddIcon fontSize="small" />
         </Button>

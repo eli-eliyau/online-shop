@@ -8,7 +8,7 @@ import Cart from "../components/cart/Cart";
 
 const Index = () => {
   return (
-    <Box height={"100vh"}>
+    <Box height={"100vh"} >
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/categorys" element={<AllCategory />} />

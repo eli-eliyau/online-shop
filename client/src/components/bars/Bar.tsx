@@ -13,20 +13,18 @@ import CartButton from "../buttons/CartButton";
 import SearchInput from "./SearchInput";
 import { useRecoilValue } from "recoil";
 import { cart } from "../../atom";
+import { quantity } from "../../config/functions";
 
 const Bar = () => {
-  let quantityProducts = 0;
   const getCart = useRecoilValue(cart);
 
-  getCart?.forEach((element) => {
-    quantityProducts += element.quantity;
-  });
+ 
 console.log(getCart);
 
   return (
     <Box
       sx={{
-        background: "rgb(253, 239, 205)",
+        background: "#a8dadc",
       }}
     >
       <Container>
@@ -41,7 +39,7 @@ console.log(getCart);
               </Typography>
             </Grid>
             <Grid item xs={3} md={4} style={{ textAlign: "left" }}>
-              <CartButton cartItems={quantityProducts} />
+              <CartButton cartItems={ quantity(getCart)} />
             </Grid>
           </Grid>
         </Toolbar>

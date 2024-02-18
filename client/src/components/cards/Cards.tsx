@@ -49,7 +49,7 @@ const Cards = ({ data }: IProps) => {
   };
 
   return (
-    <Box sx={{ borderRadius: "15px", background: "#edecebc5", height: "100%" }}>
+    <Box sx={{ borderRadius: "15px", background: "#f1faee", height: "100%" }}>
       <Box onClick={() => handleCategoryClick(data.id)}>
         <CardMedia
           component="img"
