@@ -33,7 +33,6 @@ const Cart = () => {
               item
               xs={6}
               sm={3}
-              width={"0%"}
               //   sx={{ background: "#f5c3c3" }}
             >
               <Cards data={e} key={i} />

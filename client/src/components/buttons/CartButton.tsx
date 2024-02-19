@@ -14,10 +14,10 @@ const CartButton = ({ cartItems }: CartButtonProps) => {
     <IconButton
       color="inherit"
       size="large"
-      sx={{ background: "#e63946" }}
+      sx={{ background: "#1679b7a8" }}
       onClick={() => navigate("/cart")}
     >
-      <Badge badgeContent={cartItems} color="error" max={1000}>
+      <Badge badgeContent={cartItems}  color="info" max={1000}>
         <ShoppingCartIcon />
       </Badge>
     </IconButton>

@@ -15,7 +15,6 @@ interface IProps {
 
 const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
   const [count, setCount] = React.useState(quantity ? quantity : 0);
-console.log(quantity);
 
   return (
     <Box
@@ -40,6 +39,7 @@ console.log(quantity);
           onClick={() => {
             setCount(Math.max(count - 1, 0));
           }}
+          sx={{ color: "#3a5069"}}
         >
           <RemoveIcon fontSize="small" />
         </Button>
@@ -62,7 +62,7 @@ console.log(quantity);
             },
            
          
-            color: "#e63946"
+            color: "#3a5069"
           }}
         >
           <AddIcon fontSize="small" />
@@ -75,6 +75,11 @@ console.log(quantity);
           count > 0 && onQuantity(count)
           quantity  ? setCount(count) : setCount(0)
         }}
+        sx={{background:'#3a5069' , color:'#ffffff',
+        '&:hover': { 
+          color:'#3a5069'
+        },
+      }}
       >
         {quantity ? "שמור שינוי" : "הוסף לסל"}
       </Button>

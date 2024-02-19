@@ -6,6 +6,7 @@ import BasicTabs from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
 
+import Img from "../../components/cards/Img";
 import ImageCarousel from "../../components/cards/ImageCarousel";
 
 export const imges = [
@@ -15,6 +16,8 @@ export const imges = [
 ];
 
 const Home = () => {
+ 
+
   return (
     <Box sx={{ height: "100vh" }}>
       <StyledAppBar>
@@ -34,10 +37,11 @@ const Home = () => {
               xs: "50%",
               sm: "60%",
             },
-            background: "#1d3557",
           }}
         >
-          <ImageCarousel images={imges} interval={3000} />
+          <ImageCarousel images={imges} interval={8000} />
+          {/* <Img /> */}
+
         </Grid>
         <Box sx={{ background: "#f1faee0" }}>
           <Container>
@@ -45,7 +49,6 @@ const Home = () => {
             <PlaygroundSpeedDial />
           </Container>
           <Footer />
-
         </Box>
       </Box>
     </Box>

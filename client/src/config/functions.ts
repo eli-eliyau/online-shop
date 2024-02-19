@@ -14,7 +14,7 @@ export const  totalPrice= (data: ICart[])=>{
     let count = 0;
 
     data.forEach((element) => {
-        count += element.price;
+        count += element.price *  element.quantity ;
     })
     return count
 }

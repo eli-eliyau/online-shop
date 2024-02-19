@@ -24,7 +24,7 @@ console.log(getCart);
   return (
     <Box
       sx={{
-        background: "#a8dadc",
+        background: "#fcc7b5",
       }}
     >
       <Container>

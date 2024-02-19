@@ -49,7 +49,7 @@ const Cards = ({ data }: IProps) => {
   };
 
   return (
-    <Box sx={{ borderRadius: "15px", background: "#f1faee", height: "100%" }}>
+    <Box sx={{ borderRadius: "15px", background: "#ffffff", height: "100%",border: "2px solid #8e9fd56a" }}>
       <Box onClick={() => handleCategoryClick(data.id)}>
         <CardMedia
           component="img"
@@ -69,12 +69,12 @@ const Cards = ({ data }: IProps) => {
           alignItems="center"
           sx={{ pt: 2 }}
         >
-          <Typography variant="h5" textAlign="center">
+          <Typography variant="inherit" textAlign="center">
             {data.name}
           </Typography>
 
           {"price" in data && (
-            <Typography variant="h5" textAlign="center">
+            <Typography variant="inherit" textAlign="center">
               {`${data.price} $`}
             </Typography>
           )}

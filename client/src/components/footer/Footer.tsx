@@ -13,7 +13,7 @@ const Footer = () => {
     };
   
     return (
-      <BottomNavigation value={value} onChange={handleChange} sx={{background:" rgba(253, 239, 205, 0.676)" ,mt:5}}>
+      <BottomNavigation value={value} onChange={handleChange} sx={{background:" #fdefcdac" ,mt:5}}>
         <BottomNavigationAction label="בית" icon={<HomeIcon />} />
         <BottomNavigationAction label="גלישה" icon={<ExploreIcon />} />
         <BottomNavigationAction label="חשבון" icon={<AccountCircleIcon />} />

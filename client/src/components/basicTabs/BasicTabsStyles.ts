@@ -26,10 +26,10 @@ export const TabsS = styled(Tabs)({
     color:"#1d3557"
   },
   "& .MuiTab-root.Mui-selected": {
-    color: "#e63946", // צבע הטקסט כאשר התווית נבחרת
+    color: "#dc9fc3", // צבע הטקסט כאשר התווית נבחרת
   },
   "& .MuiTabs-indicator": {
-    background: "#e63946", // צבע הקן התחתון כאשר התווית נבחרת
+    background: '#dc9fc3', // צבע הקן התחתון כאשר התווית נבחרת
   },
   "& .MuiTab-root": {
     color: "#1d3557", // צבע הטקסט כאשר התווית לא נבחרת
