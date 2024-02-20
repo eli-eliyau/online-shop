@@ -11,13 +11,13 @@ import { indexTab } from "../../atom";
 
 const BasicTabs = () => {
   const [tabs, setTabs] = React.useState<ICategory[]>();
-  const [iTab,setItab] =useRecoilState(indexTab)
+  const [iTab, setItab] = useRecoilState(indexTab);
   const isMounted = React.useRef(true);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    navigate("/categorys");
     if (isMounted.current) {
+      navigate("/categorys");
       axios
         .get(`${API_SERVER}/getCategoryTabs`)
         .then((res) => {
@@ -44,14 +44,12 @@ const BasicTabs = () => {
       aria-label="basic tabs example"
       variant="scrollable"
       scrollButtons="auto"
-      
     >
       <Tab
         label="תראה לי הכל"
         onClick={() => {
           navigate("/categorys");
         }}
-       
       />
       {tabs?.map((e, i) => (
         <Tab

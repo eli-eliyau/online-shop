@@ -6,8 +6,9 @@ import BasicTabs from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
 
-import Img from "../../components/cards/Img";
-import ImageCarousel from "../../components/cards/ImageCarousel";
+import Img from "../../components/gallery/Img";
+import ImageCarousel from "../../components/gallery/ImageCarousel";
+import Gallery from "../../components/gallery/Gallery";
 
 export const imges = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSybe7R8Y4SoQoCPKD6WSDx4Y1CCfv8e4UUug&usqp=CAU",
@@ -16,15 +17,15 @@ export const imges = [
 ];
 
 const Home = () => {
- 
+
 
   return (
-    <Box sx={{ height: "100vh" }}>
+    <Box sx={{ height: "100vh" ,width:'100%'}}>
       <StyledAppBar>
         <Bar />
         <BasicTabs />
       </StyledAppBar>
-      <Box sx={{ mt: 19, height: "100%" }}>
+      {/* <Box> */}
         <Grid
           container
           direction="row"
@@ -32,16 +33,16 @@ const Home = () => {
           alignItems="center"
           width={"100%"}
           sx={{
-            pt: 2,
-            height: {
-              xs: "50%",
-              sm: "60%",
-            },
+            mt: 20,
+            // height: {
+            //   xs: "30%",
+            //   sm: "80%",
+            // },
           }}
         >
-          <ImageCarousel images={imges} interval={8000} />
+          {/* <ImageCarousel images={imges} interval={8000} /> */}
           {/* <Img /> */}
-
+          <Gallery />
         </Grid>
         <Box sx={{ background: "#f1faee0" }}>
           <Container>
@@ -50,7 +51,7 @@ const Home = () => {
           </Container>
           <Footer />
         </Box>
-      </Box>
+      {/* </Box> */}
     </Box>
   );
 };

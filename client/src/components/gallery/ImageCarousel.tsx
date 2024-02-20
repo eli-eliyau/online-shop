@@ -46,7 +46,7 @@ const ImageCarousel = ({ images, interval }: IProps) => {
         width: {
           xs: "100%",
           sm: "50%",
-          md: "70%",
+          md: "30%",
         },
       }}
     >

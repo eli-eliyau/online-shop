@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { IProducts } from "../../config/interface";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -10,8 +10,9 @@ import Cards from "../../components/cards/Cards";
 const Products = () => {
   const [products, setProducts] = React.useState<IProducts[]>();
   const { categoryID } = useParams();
-  
-  React.useEffect(() => {
+  const productsRef = useRef<HTMLDivElement>(null); // יצירת הרפרנס של הקומפוננטה
+
+  useEffect(() => {
     const cleanId = categoryID?.split(":")[1];
     categoryID &&
       axios
@@ -23,12 +24,18 @@ const Products = () => {
           console.log(err);
         });
   }, [categoryID]);
-  
+
+  useEffect(() => {
+    if (productsRef.current) {
+      productsRef.current.scrollIntoView({ behavior: "smooth" }); // מעבר לקומפוננטה בצורה אוטומטית כאשר היא מתרנדרת
+    }
+  }, [products]);
+
   return (
-    <Box  >
+    <Box>
       <h1>{`${products?.[0]?.nameCategory}`}</h1>
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} ref={productsRef}>
         {products?.map((e, i) => (
           <GridContainer item xs={12} sm={4} md={3} key={i}>
             <Cards data={e} />

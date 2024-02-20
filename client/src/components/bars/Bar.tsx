@@ -18,9 +18,6 @@ import { quantity } from "../../config/functions";
 const Bar = () => {
   const getCart = useRecoilValue(cart);
 
- 
-console.log(getCart);
-
   return (
     <Box
       sx={{
@@ -39,7 +36,7 @@ console.log(getCart);
               </Typography>
             </Grid>
             <Grid item xs={3} md={4} style={{ textAlign: "left" }}>
-              <CartButton cartItems={ quantity(getCart)} />
+              <CartButton cartItems={quantity(getCart)} />
             </Grid>
           </Grid>
         </Toolbar>
@@ -49,7 +46,7 @@ console.log(getCart);
 };
 
 export const StyledAppBar = styled(AppBar)`
-  /* position: fixed; */
+  height: "10%";
   background: rgb(255, 255, 255);
   box-shadow: 0px 5px 10px rgb(255, 255, 255);
 `;

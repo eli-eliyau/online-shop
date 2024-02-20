@@ -16,7 +16,6 @@ const AllCategory = () => {
   const [iTab, setITab] = useRecoilState(indexTab);
 
   React.useEffect(() => {
-    navigate("/categorys");
     if (isMounted.current) {
       axios
         .get(`${API_SERVER}/getCategoryTabs`)
