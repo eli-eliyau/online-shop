@@ -33,7 +33,8 @@ const Gallery = () => {
       sx={{
         width: {
           xs: "90%",
-          sm: "60%",
+          sm: "45%",
+          xl: "70%",
         },
         height: "90%",
       }}

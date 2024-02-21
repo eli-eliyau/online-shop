@@ -6,7 +6,7 @@ import BasicTabs from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
 
-import Img from "../../components/gallery/Img";
+// import Img from "../../components/gallery/Img";
 import ImageCarousel from "../../components/gallery/ImageCarousel";
 import Gallery from "../../components/gallery/Gallery";
 
