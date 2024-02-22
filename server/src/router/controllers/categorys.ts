@@ -43,7 +43,7 @@ const category = [
     }
 ]
 
-const categoriesProducts = [
+export const categoriesProducts = [
     {
         id: "1",
         categoryId: "1",

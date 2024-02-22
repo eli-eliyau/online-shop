@@ -4,7 +4,8 @@ export interface ICategory {
         img: string,
 }
 
-export interface IProducts {
+export interface IProduct
+ {
         id: string;
         categoryId: string;
         nameCategory:string;

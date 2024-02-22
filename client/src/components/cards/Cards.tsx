@@ -4,10 +4,10 @@ import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
 import { ICart, cart } from "../../atom";
 import { useNavigate } from "react-router-dom";
-import { ICategory, IProducts } from "../../config/interface";
+import { ICategory, IProduct } from "../../config/interface";
 
 interface IProps {
-  data: ICategory | IProducts | ICart;
+  data: ICategory | IProduct | ICart;
 }
 
 const Cards = ({ data }: IProps) => {
@@ -45,7 +45,7 @@ const Cards = ({ data }: IProps) => {
   };
 
   const handleCategoryClick = (id: string) => {
-    !("categoryId" in data) && navigate(`/categorys/:${id}`);
+    !("categoryId" in data) && navigate(`/categorys/products/:${id}`);
   };
 
   return (

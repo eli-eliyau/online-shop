@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import React, { useRef, useEffect } from "react";
-import { IProducts } from "../../config/interface";
+import { IProduct } from "../../config/interface";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API_SERVER } from "../../App";
@@ -8,7 +8,7 @@ import { GridContainer } from "../../components/cards/StyleCards";
 import Cards from "../../components/cards/Cards";
 
 const Products = () => {
-  const [products, setProducts] = React.useState<IProducts[]>();
+  const [products, setProducts] = React.useState<IProduct[]>();
   const { categoryID } = useParams();
   const productsRef = useRef<HTMLDivElement>(null); // יצירת הרפרנס של הקומפוננטה
 
@@ -38,7 +38,7 @@ const Products = () => {
       <Grid container spacing={2} ref={productsRef}>
         {products?.map((e, i) => (
           <GridContainer item xs={12} sm={4} md={3} key={i}>
-            <Cards data={e} />
+            <Cards data={e} key={i}/>
           </GridContainer>
         ))}
       </Grid>
