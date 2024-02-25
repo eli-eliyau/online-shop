@@ -7,9 +7,10 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { Grid } from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 interface IProps {
-  onQuantity:any;
+  onQuantity: any;
   quantity?: number;
 }
 
@@ -39,50 +40,65 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
           onClick={() => {
             setCount(Math.max(count - 1, 0));
           }}
-          sx={{ color: "#3a5069"}}
+          sx={{ color: "#A51D1D" }}
         >
           <RemoveIcon fontSize="small" />
         </Button>
-        <Badge
-          color="secondary"
-          badgeContent={count}
-          showZero={false}
-          sx={{ p: 1 }}
-        >
-          <ProductionQuantityLimitsIcon />
-        </Badge>
+        {quantity !== undefined && (
+          <Badge
+            color="secondary"
+            badgeContent={count}
+            showZero={false}
+            sx={{ p: 1 }}
+          >
+            <ProductionQuantityLimitsIcon />
+            {/* <AddShoppingCartIcon /> */}
+          </Badge>
+        )}
         <Button
           aria-label="increase"
           onClick={() => {
             setCount(count + 1);
           }}
           sx={{
-            "& .MuiTab-root.Mui-selected": {
-              color: "#3950e6", // צבע הטקסט כאשר התווית נבחרת
-            },
-           
-         
-            color: "#3a5069"
+            color: "#A51D1D",
           }}
         >
           <AddIcon fontSize="small" />
         </Button>
+        <Button
+          variant="outlined"
+          aria-label="increase"
+          onClick={() => {
+            count > 0 && onQuantity(count);
+            quantity ? setCount(count) : setCount(0);
+          }}
+          sx={{
+            background: "#a51d1d9a",
+            color: "#ffffff",
+            "&:hover": {
+              color: "#A51D1D",
+              border: "1px solid #237979",
+            },
+            "& .MuiTab-root.Mui-selected": {
+              border: "2px solid #237979", // צבע הטקסט כאשר התווית נבחרת
+            },
+          }}
+        >
+          {quantity ? (
+            "שמור שינוי"
+          ) : (
+            <Badge
+              color="secondary"
+              badgeContent={count}
+              showZero={false}
+              sx={{ p: 1 }}
+            >
+              <AddShoppingCartIcon />
+            </Badge>
+          )}
+        </Button>
       </Grid>
-      <Button
-        variant="outlined"
-        aria-label="increase"
-        onClick={() => {
-          count > 0 && onQuantity(count)
-          quantity  ? setCount(count) : setCount(0)
-        }}
-        sx={{background:'#3a5069' , color:'#ffffff',
-        '&:hover': { 
-          color:'#3a5069'
-        },
-      }}
-      >
-        {quantity ? "שמור שינוי" : "הוסף לסל"}
-      </Button>
     </Box>
   );
 };

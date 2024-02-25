@@ -23,19 +23,19 @@ export const Button = styled('button')({
 export const TabsS = styled(Tabs)({
   [`& .${tabsClasses.scrollButtons}`]: {
     "&.Mui-disabled": { opacity: 1 },
-    color:"#1d3557"
+    color:"#FFB9B9"
   },
   "& .MuiTab-root.Mui-selected": {
-    color: "#dc9fc3", // צבע הטקסט כאשר התווית נבחרת
+    color: "#237979", // צבע הטקסט כאשר התווית נבחרת
   },
   "& .MuiTabs-indicator": {
-    background: '#dc9fc3', // צבע הקן התחתון כאשר התווית נבחרת
+    background: '#237979', // צבע הקן התחתון כאשר התווית נבחרת
   },
   "& .MuiTab-root": {
-    color: "#1d3557", // צבע הטקסט כאשר התווית לא נבחרת
+    color: "#A51D1D", // צבע הטקסט כאשר התווית לא נבחרת
   },
   direction: "rtl",
-  color: '#e63946',
+  color: '#237979',
 
 
 

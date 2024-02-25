@@ -33,10 +33,11 @@ const Gallery = () => {
       sx={{
         width: {
           xs: "90%",
-          sm: "45%",
-          xl: "70%",
+          sm: "50dvw",
+          xl: "50dvw",
         },
-        height: "90%",
+        boxShadow:
+          "5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0)",
       }}
     >
       <ImageGallery items={images} autoPlay slideInterval={3000} />

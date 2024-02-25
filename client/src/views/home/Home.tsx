@@ -20,7 +20,7 @@ const Home = () => {
 
 
   return (
-    <Box sx={{ height: "100vh" ,width:'100%'}}>
+    <Box sx={{ width:'100%'}}>
       <StyledAppBar>
         <Bar />
         <BasicTabs />
@@ -33,7 +33,8 @@ const Home = () => {
           alignItems="center"
           width={"100%"}
           sx={{
-            mt: 20,
+          background:"#ffffff",
+            mt: 22,
             // height: {
             //   xs: "30%",
             //   sm: "80%",
@@ -44,7 +45,7 @@ const Home = () => {
           {/* <Img /> */}
           <Gallery />
         </Grid>
-        <Box sx={{ background: "#f1faee0" }}>
+        <Box >
           <Container>
             <Outlet />
             <PlaygroundSpeedDial />

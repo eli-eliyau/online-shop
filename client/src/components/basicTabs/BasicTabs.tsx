@@ -29,7 +29,7 @@ const BasicTabs = () => {
   }, []);
 
   const handleTabClick = (id: string) => {
-    navigate(`/categorys/products/:${id}`);
+    navigate(`/categorys/:${id}`);
     console.log(`Tab ${id} נלחץ`);
   };
 

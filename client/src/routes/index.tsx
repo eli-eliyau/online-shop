@@ -9,11 +9,11 @@ import Product from "../views/categorys/Product";
 
 const Index = () => {
   return (
-    <Box height={"100vh"} >
+    <Box  >
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/categorys" element={<AllCategory />} />
-          <Route path="/categorys/products/:categoryID" element={<Products />} />
+          <Route path="/categorys/:categoryID" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/categorys/product/:productID" element={<Product/>} />
         </Route>

@@ -21,7 +21,7 @@ const Bar = () => {
   return (
     <Box
       sx={{
-        background: "#fcc7b5",
+        background: "#237979",
       }}
     >
       <Container>

@@ -22,7 +22,7 @@ const Cards = ({ data }: IProps) => {
         img: data.img,
         categoryId: data.categoryId,
         productId: data.id,
-        price:data.price,
+        price: data.price,
         quantity,
       };
 
@@ -34,22 +34,32 @@ const Cards = ({ data }: IProps) => {
           return prevCart;
         }
       });
-    }
-    else if("quantity" in data){
+    } else if ("quantity" in data) {
       setPushCart((prevCart) =>
-    prevCart.map((product) =>
-      product.id === data.id ? { ...product, quantity: quantity } : product
-    )
-  );
+        prevCart.map((product) =>
+          product.id === data.id ? { ...product, quantity: quantity } : product
+        )
+      );
     }
   };
 
   const handleCategoryClick = (id: string) => {
-    !("categoryId" in data) && navigate(`/categorys/products/:${id}`);
+    !("categoryId" in data) && navigate(`/categorys/:${id}`);
+    "nameCategory" in data && navigate(`/categorys/product/:${id}`);
   };
 
   return (
-    <Box sx={{ borderRadius: "15px", background: "#ffffff", height: "100%",border: "2px solid #8e9fd56a" }}>
+    <Box
+      sx={{
+        borderRadius: "15px",
+        background: "#ffffff",
+        height: "100%",
+        // border: "1px solid #237979",
+        boxShadow:"10px 7px 17px -3px rgba(207,150,150,0.79)",
+
+
+      }}
+    >
       <Box onClick={() => handleCategoryClick(data.id)}>
         <CardMedia
           component="img"
@@ -69,26 +79,21 @@ const Cards = ({ data }: IProps) => {
           alignItems="center"
           sx={{ pt: 2 }}
         >
-          <Typography variant="inherit" textAlign="center">
+          <Typography variant="inherit" sx={{fontWeight: 'bold'}}  color={"#A51D1D"} textAlign="center">
             {data.name}
           </Typography>
 
           {"price" in data && (
-            <Typography variant="inherit" textAlign="center">
+            <Typography variant="inherit" sx={{fontWeight: 'bold'}} color={"#A51D1D"} textAlign="center">
               {`${data.price} $`}
             </Typography>
           )}
         </Grid>
       </Box>
-      { "nameCategory" in data  && 
-        <QuantitySelection onQuantity={addCart}  />      
-    }
-    {
-      "quantity" in data && 
-      <QuantitySelection onQuantity={addCart} quantity={data.quantity} />      
-
-
-    }
+      {"nameCategory" in data && <QuantitySelection onQuantity={addCart} />}
+      {"quantity" in data && (
+        <QuantitySelection onQuantity={addCart} quantity={data.quantity} />
+      )}
     </Box>
   );
 };

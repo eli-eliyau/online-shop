@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React, { useRef, useEffect } from "react";
 import { IProduct } from "../../config/interface";
 import { useParams } from "react-router-dom";
@@ -32,8 +32,15 @@ const Products = () => {
   }, [products]);
 
   return (
-    <Box>
-      <h1>{`${products?.[0]?.nameCategory}`}</h1>
+    <Box sx={{pt:5}}>
+       <Typography
+        variant="h4"
+        sx={{
+          textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
+          fontWeight: 'bold'
+        }}
+        color={"#A51D1D"}
+      >{`${products?.[0]?.nameCategory}`}</Typography>
 
       <Grid container spacing={2} ref={productsRef}>
         {products?.map((e, i) => (
