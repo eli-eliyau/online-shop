@@ -73,6 +73,7 @@ const Product = () => {
           sx={{
             textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
             fontWeight: "bold",
+           
           }}
           color={"#A51D1D"}
         >{`${product?.name}`}</Typography>
@@ -92,6 +93,7 @@ const Product = () => {
           sx={{
             textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
             fontWeight: "bold",
+            textAlign:"center"
           }}
           color={"#A51D1D"}
         >{`תיאור המוצר ${product?.name}`}</Typography>

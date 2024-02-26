@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 // import Img from "../../components/gallery/Img";
 import ImageCarousel from "../../components/gallery/ImageCarousel";
 import Gallery from "../../components/gallery/Gallery";
+import Whtasapp from "../../components/buttons/Whatsapp";
 
 export const imges = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSybe7R8Y4SoQoCPKD6WSDx4Y1CCfv8e4UUug&usqp=CAU",
@@ -48,7 +49,8 @@ const Home = () => {
         <Box >
           <Container>
             <Outlet />
-            <PlaygroundSpeedDial />
+            {/* <PlaygroundSpeedDial /> */}
+            <Whtasapp />
           </Container>
           <Footer />
         </Box>

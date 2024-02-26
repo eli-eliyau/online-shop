@@ -26,13 +26,16 @@ const Products = () => {
   }, [categoryID]);
 
   useEffect(() => {
-    if (productsRef.current) {
-      productsRef.current.scrollIntoView({ behavior: "smooth" }); // מעבר לקומפוננטה בצורה אוטומטית כאשר היא מתרנדרת
+    if (productsRef.current && products && products.length > 0) {
+      const lastBox = productsRef.current.querySelector('div.MuiBox-root:last-child');
+      if (lastBox) {
+        lastBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }, [products]);
 
   return (
-    <Box sx={{pt:5}}>
+    <Box sx={{mt:5}}>
        <Typography
         variant="h4"
         sx={{
@@ -44,7 +47,7 @@ const Products = () => {
 
       <Grid container spacing={2} ref={productsRef}>
         {products?.map((e, i) => (
-          <GridContainer item xs={12} sm={4} md={3} key={i}>
+          <GridContainer item xs={6} sm={4} md={3} key={i}>
             <Cards data={e} key={i}/>
           </GridContainer>
         ))}

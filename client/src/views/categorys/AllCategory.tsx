@@ -27,6 +27,7 @@ const AllCategory = () => {
     }
   }, []);
 
+
   return (
     <Box sx={{pt:5}}>
       <Typography
@@ -47,7 +48,7 @@ const AllCategory = () => {
             return (
               <GridContainer
                 item
-                xs={12}
+                xs={6}
                 sm={4}
                 md={3}
                 key={i}

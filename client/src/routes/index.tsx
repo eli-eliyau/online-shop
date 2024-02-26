@@ -9,7 +9,6 @@ import Product from "../views/categorys/Product";
 
 const Index = () => {
   return (
-    <Box  >
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/categorys" element={<AllCategory />} />
@@ -18,7 +17,6 @@ const Index = () => {
           <Route path="/categorys/product/:productID" element={<Product/>} />
         </Route>
       </Routes>
-    </Box>
   );
 };
 
