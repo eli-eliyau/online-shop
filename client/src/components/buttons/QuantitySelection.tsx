@@ -46,7 +46,7 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
         </Button>
         {quantity !== undefined && (
           <Badge
-            color="secondary"
+            color="default"
             badgeContent={count}
             showZero={false}
             sx={{ p: 1 }}
@@ -70,19 +70,19 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
           variant="outlined"
           aria-label="increase"
           onClick={() => {
-            count > 0 && onQuantity(count);
+            quantity  ?onQuantity(count) : count > 0 && onQuantity(count);
             quantity ? setCount(count) : setCount(0);
           }}
           sx={{
             background: "#ddbea8",
             color: "#ffffff",
-            border: "2px solid #ffffff",
+            border: "1px solid #ffffff",
             "&:hover": {
               color: "#ddbea8",
               border: "1px solid #ffffff",
             },
             "& .MuiTab-root.Mui-selected": {
-              border: "2px solid #ffffff", // צבע הטקסט כאשר התווית נבחרת
+              border: "1px solid #ffffff", // צבע הטקסט כאשר התווית נבחרת
             },
           }}
         >

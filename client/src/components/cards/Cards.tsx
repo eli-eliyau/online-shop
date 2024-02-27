@@ -35,11 +35,19 @@ const Cards = ({ data }: IProps) => {
         }
       });
     } else if ("quantity" in data) {
-      setPushCart((prevCart) =>
-        prevCart.map((product) =>
-          product.id === data.id ? { ...product, quantity: quantity } : product
-        )
-      );
+      quantity !== 0
+        ? setPushCart((prevCart) =>
+            prevCart.map((product) =>
+              product.id === data.id
+                ? { ...product, quantity: quantity }
+                : product
+            )
+          )
+        : setPushCart((prevCart) =>
+            prevCart.filter(
+              (product) => product.id !== data.id || quantity !== 0
+            )
+          );
     }
   };
 
@@ -55,8 +63,7 @@ const Cards = ({ data }: IProps) => {
         background: "#ffffff",
         height: "100%",
         // border: "1px solid #237979",
-        boxShadow:"10px 7px 17px -3px rgba(207,150,150,0.79)",
-
+        boxShadow: "10px 7px 17px -3px rgba(207,150,150,0.79)",
       }}
     >
       <Box onClick={() => handleCategoryClick(data.id)}>
@@ -78,12 +85,22 @@ const Cards = ({ data }: IProps) => {
           alignItems="center"
           sx={{ pt: 2 }}
         >
-          <Typography variant="inherit" sx={{fontWeight: 'bold'}}  color={"#273e47"} textAlign="center">
+          <Typography
+            variant="inherit"
+            sx={{ fontWeight: "bold" }}
+            color={"#273e47"}
+            textAlign="center"
+          >
             {data.name}
           </Typography>
 
           {"price" in data && (
-            <Typography variant="inherit" sx={{fontWeight: 'bold'}} color={"#273e47"} textAlign="center">
+            <Typography
+              variant="inherit"
+              sx={{ fontWeight: "bold" }}
+              color={"#273e47"}
+              textAlign="center"
+            >
               {`${data.price} $`}
             </Typography>
           )}

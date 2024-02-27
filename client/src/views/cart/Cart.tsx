@@ -17,7 +17,7 @@ const Cart = () => {
   // }, []);
 
   return (
-    <Box sx={{ pt: 5,height:"200px"}}>
+    <Box sx={{ pt: 5}}>
       <Title name="עגלת קניות" />
       <Grid container direction="row" spacing={2}>
         {getCart.map((e, i) => {
