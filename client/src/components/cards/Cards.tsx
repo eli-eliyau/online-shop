@@ -57,7 +57,6 @@ const Cards = ({ data }: IProps) => {
         // border: "1px solid #237979",
         boxShadow:"10px 7px 17px -3px rgba(207,150,150,0.79)",
 
-
       }}
     >
       <Box onClick={() => handleCategoryClick(data.id)}>
@@ -79,12 +78,12 @@ const Cards = ({ data }: IProps) => {
           alignItems="center"
           sx={{ pt: 2 }}
         >
-          <Typography variant="inherit" sx={{fontWeight: 'bold'}}  color={"#A51D1D"} textAlign="center">
+          <Typography variant="inherit" sx={{fontWeight: 'bold'}}  color={"#273e47"} textAlign="center">
             {data.name}
           </Typography>
 
           {"price" in data && (
-            <Typography variant="inherit" sx={{fontWeight: 'bold'}} color={"#A51D1D"} textAlign="center">
+            <Typography variant="inherit" sx={{fontWeight: 'bold'}} color={"#273e47"} textAlign="center">
               {`${data.price} $`}
             </Typography>
           )}

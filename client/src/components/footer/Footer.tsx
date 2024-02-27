@@ -7,9 +7,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 
 const Footer = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState("");
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number ) => {
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     newValue && setValue(newValue);
   };
 
@@ -17,28 +17,39 @@ const Footer = () => {
     <BottomNavigation
       value={value}
       onChange={handleChange}
-      sx={{ mt: 5, background: "#237979" }}
+      sx={{ mt: 5, background: "#273e47" }}
     >
       <BottomNavigationAction
-        label="מזרחי 4 פתח תקווה"
-        style={{ color: value === 0 ? "#ffffff" : "#ffffff" }}
+        label="גלישה"
+        style={{ color: value === "favorites" ? "#ffffff" : "#ffffff" }}
+        value="favorites"
         icon={
-          <LocationOnIcon htmlColor={value === 0 ? "#ffffff" : "#ffffff"} />
+          <ExploreIcon
+            htmlColor={value === "favorites" ? "#ffffff" : "#ffffff"}
+          />
         }
       />
       <BottomNavigationAction
-        label="גלישה"
-        style={{ color: value === 1 ? "#ffffff" : "#ffffff" }}
-        icon={<ExploreIcon htmlColor={value === 1 ? "#ffffff" : "#ffffff"} />}
+        label="מזרחי 4 פתח תקווה"
+        style={{ color: value === "location" ? "#ffffff" : "#ffffff" }}
+        value="location"
+        icon={
+          <LocationOnIcon
+            htmlColor={value === "location" ? "#ffffff" : "#ffffff"}
+          />
+        }
       />
-    
-        <BottomNavigationAction
-          label="054222222"
-          type="button"
-          style={{ color: value === 2 ? "#ffffff" : "#ffffff" }}
-          icon={<a href="tel:054222222" style={{ textDecoration: "none" }}><PhoneIcon htmlColor={value === 2 ? "#ffffff" : "#ffffff"} /></a>}
-        />
-      
+      <BottomNavigationAction
+        label="054222222"
+        type="button"
+        style={{ color: value === "call" ? "#ffffff" : "#ffffff" }}
+        value="call"
+        icon={
+          <a href="tel:054222222" style={{ textDecoration: "none" }}>
+            <PhoneIcon htmlColor={value === "call" ? "#ffffff" : "#ffffff"} />
+          </a>
+        }
+      />
     </BottomNavigation>
   );
 };

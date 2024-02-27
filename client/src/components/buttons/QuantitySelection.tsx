@@ -40,7 +40,7 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
           onClick={() => {
             setCount(Math.max(count - 1, 0));
           }}
-          sx={{ color: "#A51D1D" }}
+          sx={{ color: "#ddbea8" }}
         >
           <RemoveIcon fontSize="small" />
         </Button>
@@ -61,7 +61,7 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
             setCount(count + 1);
           }}
           sx={{
-            color: "#A51D1D",
+            color: "#ddbea8",
           }}
         >
           <AddIcon fontSize="small" />
@@ -74,14 +74,15 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
             quantity ? setCount(count) : setCount(0);
           }}
           sx={{
-            background: "#a51d1d9a",
+            background: "#ddbea8",
             color: "#ffffff",
+            border: "2px solid #ffffff",
             "&:hover": {
-              color: "#A51D1D",
-              border: "1px solid #237979",
+              color: "#ddbea8",
+              border: "1px solid #ffffff",
             },
             "& .MuiTab-root.Mui-selected": {
-              border: "2px solid #237979", // צבע הטקסט כאשר התווית נבחרת
+              border: "2px solid #ffffff", // צבע הטקסט כאשר התווית נבחרת
             },
           }}
         >
@@ -89,10 +90,12 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
             "שמור שינוי"
           ) : (
             <Badge
-              color="secondary"
+              color="default"
               badgeContent={count}
               showZero={false}
-              sx={{ p: 1 }}
+              sx={{ m: 0.3 ,p:0.5
+              
+              }}
             >
               <AddShoppingCartIcon />
             </Badge>

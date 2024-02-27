@@ -18,43 +18,47 @@ export const imges = [
 ];
 
 const Home = () => {
-
-
   return (
-    <Box sx={{ width:'100%'}}>
+    <Box
+      sx={{
+        width: "100%",
+       
+      }}
+    >
       <StyledAppBar>
         <Bar />
         <BasicTabs />
       </StyledAppBar>
-      {/* <Box> */}
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          width={"100%"}
-          sx={{
-          background:"#ffffff",
-            mt: 22,
-            // height: {
-            //   xs: "30%",
-            //   sm: "80%",
-            // },
-          }}
-        >
-          {/* <ImageCarousel images={imges} interval={8000} /> */}
-          {/* <Img /> */}
-          <Gallery />
-        </Grid>
-        <Box >
-          <Container>
-            <Outlet />
-            {/* <PlaygroundSpeedDial /> */}
-            <Whtasapp />
-          </Container>
-          <Footer />
-        </Box>
-      {/* </Box> */}
+      <Box sx={{ background:
+          "linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(221,190,168,0.9108018207282913) 100%)",}}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        width={"100%"}
+        sx={{
+          background: "#ffffff",
+          mt: 22,
+          // height: {
+          //   xs: "30%",
+          //   sm: "80%",
+          // },
+        }}
+      >
+        {/* <ImageCarousel images={imges} interval={8000} /> */}
+        {/* <Img /> */}
+        <Gallery />
+      </Grid>
+      <Box>
+        <Container>
+          <Outlet />
+          {/* <PlaygroundSpeedDial /> */}
+          <Whtasapp />
+        </Container>
+        <Footer />
+      </Box>
+      </Box>
     </Box>
   );
 };

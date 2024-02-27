@@ -28,9 +28,7 @@ const SearchField = () => {
             edge="end"
             color="inherit"
             aria-label="search"
-            sx={{background:'#a51d1d0',
-           
-          }}
+          sx={{color:'#ffffff'}}
           >
             <SearchIcon />
           </IconButton>

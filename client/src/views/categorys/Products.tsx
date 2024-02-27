@@ -6,6 +6,7 @@ import axios from "axios";
 import { API_SERVER } from "../../App";
 import { GridContainer } from "../../components/cards/StyleCards";
 import Cards from "../../components/cards/Cards";
+import Title from "../../components/title/Title";
 
 const Products = () => {
   const [products, setProducts] = React.useState<IProduct[]>();
@@ -27,7 +28,9 @@ const Products = () => {
 
   useEffect(() => {
     if (productsRef.current && products && products.length > 0) {
-      const lastBox = productsRef.current.querySelector('div.MuiBox-root:last-child');
+      const lastBox = productsRef.current.querySelector(
+        "div.MuiBox-root:last-child"
+      );
       if (lastBox) {
         lastBox.scrollIntoView({ behavior: "smooth", block: "center" });
       }
@@ -35,20 +38,13 @@ const Products = () => {
   }, [products]);
 
   return (
-    <Box sx={{mt:5}}>
-       <Typography
-        variant="h4"
-        sx={{
-          textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
-          fontWeight: 'bold'
-        }}
-        color={"#A51D1D"}
-      >{`${products?.[0]?.nameCategory}`}</Typography>
+    <Box sx={{ mt: 5 }}>
+      <Title name={products?.[0]?.nameCategory} />
 
       <Grid container spacing={2} ref={productsRef}>
         {products?.map((e, i) => (
           <GridContainer item xs={6} sm={4} md={3} key={i}>
-            <Cards data={e} key={i}/>
+            <Cards data={e} key={i} />
           </GridContainer>
         ))}
       </Grid>

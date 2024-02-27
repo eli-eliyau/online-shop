@@ -8,6 +8,7 @@ import axios from "axios";
 import { API_SERVER } from "../../App";
 import { IProduct } from "../../config/interface";
 import Img from "../../components/gallery/Img";
+import Title from "../../components/title/Title";
 
 const Product = () => {
   const [product, setProduct] = useState<IProduct>();
@@ -68,15 +69,8 @@ const Product = () => {
       sx={{ pt: 5 }}
     >
       <Grid item xs={6}>
-        <Typography
-          variant="h4"
-          sx={{
-            textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
-            fontWeight: "bold",
-           
-          }}
-          color={"#A51D1D"}
-        >{`${product?.name}`}</Typography>
+      <Title name={product?.name} />
+       
 
         <Img img={product?.img} />
       </Grid>

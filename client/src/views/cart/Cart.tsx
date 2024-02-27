@@ -1,9 +1,10 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import Cards from "../cards/Cards";
+import Cards from "../../components/cards/Cards";
 import { cart } from "../../atom";
 import { useRecoilValue } from "recoil";
 import { quantity, totalPrice } from "../../config/functions";
+import Title from "../../components/title/Title";
 
 const Cart = () => {
   const getCart = useRecoilValue(cart);
@@ -16,18 +17,8 @@ const Cart = () => {
   // }, []);
 
   return (
-    <Box sx={{ pt: 5 }}>
-      <Typography
-        variant="h4"
-        sx={{
-          textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
-          fontWeight: "bold",
-        }}
-        color={"#A51D1D"}
-      >
-        עגלת קניות
-      </Typography>
-
+    <Box sx={{ pt: 5,height:"200px"}}>
+      <Title name="עגלת קניות" />
       <Grid container direction="row" spacing={2}>
         {getCart.map((e, i) => {
           return (

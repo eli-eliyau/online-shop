@@ -4,7 +4,7 @@ import Home from "../views/home/Home";
 import AllCategory from "../views/categorys/AllCategory";
 import Products from "../views/categorys/Products";
 import { Box } from "@mui/material";
-import Cart from "../components/cart/Cart";
+import Cart from "../views/cart/Cart";
 import Product from "../views/categorys/Product";
 
 const Index = () => {
