@@ -17,7 +17,7 @@ const BasicTabs = () => {
 
   React.useEffect(() => {
     if (isMounted.current) {
-      navigate("/categorys");
+      // navigate("/categorys");
       axios
         .get(`${API_SERVER}/getCategoryTabs`)
         .then((res) => {
@@ -29,6 +29,10 @@ const BasicTabs = () => {
   }, []);
 
   const handleTabClick = (id: string) => {
+    const element = document.querySelector(".MuiBox-root:last-child" ); 
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
     navigate(`/categorys/:${id}`);
     console.log(`Tab ${id} נלחץ`);
   };
@@ -50,10 +54,12 @@ const BasicTabs = () => {
         onClick={() => {
           navigate("/categorys");
         }}
+        sx={{ fontWeight: "bold"}}
       />
       {tabs?.map((e, i) => (
         <Tab
           key={i}
+          sx={{ fontWeight: "bold"}}
           label={
             <Box sx={{ position: "relative" }}>
               {/* <span

@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Grow, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import QuantitySelection from "../../components/buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
@@ -52,48 +52,59 @@ const Product = () => {
       });
     }
   };
-  //     else if("quantity" in data){
-  //       setPushCart((prevCart) =>
-  //     prevCart.map((product) =>
-  //       product.id === data.id ? { ...product, quantity: quantity } : product
-  //     )
-  //   );
-  //     }
 
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="space-around"
-      // alignItems="center"
-      sx={{ pt: 5 }}
-    >
-      <Grid item xs={6}>
-      <Title name={product?.name} />
-       
+    <Box>
+      <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-around"
+          sx={{ pt: 5, pb: 2 }}
+        >
+          <Grid item xs={6} >
+            <Title name={product?.name} />
 
-        <Img img={product?.img} />
-      </Grid>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-around"
-        alignItems="center"
-        xs={6}
-        sx={{ background: "#ffffff" }}
-      >
-        <Typography
-          variant="h6"
-          sx={{
-            textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
-            fontWeight: "bold",
-            textAlign:"center"
-          }}
-          color={"#A51D1D"}
-        >{`תיאור המוצר ${product?.name}`}</Typography>
-        <QuantitySelection onQuantity={addCart} />
-      </Grid>
-    </Grid>
+            <Img img={product?.img} />
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justifyContent="space-around"
+            alignItems="center"
+            xs={6}
+          >
+            <Grid
+              item
+              width={"80%"}
+              sx={{
+                backgroundColor: "rgba(255, 255, 255, 0.5)", // Transparent white background
+                backdropFilter: "blur(5px)", // Blur effect
+                borderRadius: "15px", // Optional: Add border radius for a rounded look
+                padding: "20px", // Optional: Add padding for spacing
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+                color={"#273e47de"}
+              >{`תיאור המוצר`}</Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  textAlign: "center",
+                }}
+                color={"#273e47de"}
+              >{`${product?.name}`}</Typography>
+            </Grid>
+            <QuantitySelection onQuantity={addCart} />
+          </Grid>
+        </Grid>
+      </Grow>
+    </Box>
   );
 };
 

@@ -17,7 +17,7 @@ const Footer = () => {
     <BottomNavigation
       value={value}
       onChange={handleChange}
-      sx={{ mt: 5, background: "#273e47" }}
+      sx={{  background: "#273e47" }}
     >
       <BottomNavigationAction
         label="גלישה"

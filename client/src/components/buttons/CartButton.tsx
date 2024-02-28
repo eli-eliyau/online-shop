@@ -15,7 +15,13 @@ const CartButton = ({ cartItems }: CartButtonProps) => {
       color="inherit"
       size="large"
       sx={{color:'#ffffff'}}
-      onClick={() => navigate("/cart")}
+      onClick={() =>{
+        navigate("/cart")
+        const element = document.querySelector(".MuiBox-root:last-child"); 
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+       }}
     >
       <Badge badgeContent={cartItems}  color="info" max={1000}>
         <ShoppingCartIcon />

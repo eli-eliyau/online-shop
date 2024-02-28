@@ -22,7 +22,7 @@ const Cart = () => {
       <Grid container direction="row" spacing={2}>
         {getCart.map((e, i) => {
           return (
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={6} sm={3} key={i}>
               <Cards data={e} key={i} />
             </Grid>
           );
@@ -30,16 +30,15 @@ const Cart = () => {
       </Grid>
       <Grid
         container
-        direction="row"
+        direction="column"
         justifyContent="center"
-        alignItems="center"
-        sm={12}
-        sx={{ pt: 4 }}
+        alignItems="flex-end"
+        sx={{ pt: 4 ,  fontWeight: "bold"}}
       >
-        <Typography sx={{ pr: 2 }} variant="inherit">{` כמות מוצרים:${quantity(
+        <Typography sx={{color:'#273e47de'}} variant="inherit">{` כמות מוצרים:${quantity(
           getCart
         )}`}</Typography>
-        <Typography variant="inherit">{`לתשלום:${totalPrice(
+        <Typography sx={{ color:'#273e47de',pt:2}} variant="inherit">{`לתשלום:${totalPrice(
           getCart
         )} ש"ח`}</Typography>
       </Grid>

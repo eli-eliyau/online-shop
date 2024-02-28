@@ -22,43 +22,44 @@ const Home = () => {
     <Box
       sx={{
         width: "100%",
-       
+        minHeight: "100vh", // Ensure that the container takes up the full height of the viewport
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <StyledAppBar>
         <Bar />
         <BasicTabs />
       </StyledAppBar>
-      <Box sx={{ background:
-          "linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(221,190,168,0.9108018207282913) 100%)",}}>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        width={"100%"}
+      <Box
         sx={{
-          background: "#ffffff",
-          mt: 22,
-          // height: {
-          //   xs: "30%",
-          //   sm: "80%",
-          // },
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(221,190,168,0.9108018207282913) 100%)",
+          flex: "1", // Allow the content to grow to fill the remaining space
         }}
       >
-        {/* <ImageCarousel images={imges} interval={8000} /> */}
-        {/* <Img /> */}
-        <Gallery />
-      </Grid>
-      <Box>
-        <Container>
-          <Outlet />
-          {/* <PlaygroundSpeedDial /> */}
-          <Whtasapp />
-        </Container>
-        <Footer />
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          width={"100%"}
+          sx={{
+            background: "#ffffff",
+            mt: 22,
+          }}
+        >
+          <Gallery />
+        </Grid>
+        <Box>
+          <Container>
+            <Outlet />
+            {/* <PlaygroundSpeedDial /> */}
+            <Whtasapp />
+          </Container>
+        </Box>
       </Box>
-      </Box>
+      <Footer />
     </Box>
   );
 };

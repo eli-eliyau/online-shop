@@ -51,7 +51,14 @@ const Cards = ({ data }: IProps) => {
     }
   };
 
+  
+
   const handleCategoryClick = (id: string) => {
+    const element = document.querySelector(".MuiBox-root:last-child"); 
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
     !("categoryId" in data) && navigate(`/categorys/:${id}`);
     "nameCategory" in data && navigate(`/categorys/product/:${id}`);
   };
@@ -59,10 +66,10 @@ const Cards = ({ data }: IProps) => {
   return (
     <Box
       sx={{
+        
         borderRadius: "15px",
         background: "#ffffff",
         height: "100%",
-        // border: "1px solid #237979",
         boxShadow: "10px 7px 17px -3px rgba(207,150,150,0.79)",
       }}
     >
@@ -83,7 +90,7 @@ const Cards = ({ data }: IProps) => {
           direction="row"
           justifyContent="space-around"
           alignItems="center"
-          sx={{ pt: 2 }}
+          sx={{ p: 1 }}
         >
           <Typography
             variant="inherit"

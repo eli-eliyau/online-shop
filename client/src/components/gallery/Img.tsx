@@ -8,7 +8,7 @@ interface IProps {
 
 const Img: React.FC<IProps> = ({ img }) => {
   return (
-    <Box sx={{ direction: "rtl" }}>
+    <Box sx={{ direction: "rtl", borderRadius: "10px", overflow: "hidden" }}>
       <ReactImageMagnify
         {...{
           smallImage: {

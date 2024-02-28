@@ -40,7 +40,7 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
           onClick={() => {
             setCount(Math.max(count - 1, 0));
           }}
-          sx={{ color: "#ddbea8" }}
+          sx={{ color: "#a51d1d96" }}
         >
           <RemoveIcon fontSize="small" />
         </Button>
@@ -61,7 +61,7 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
             setCount(count + 1);
           }}
           sx={{
-            color: "#ddbea8",
+            color: "#a51d1d96",
           }}
         >
           <AddIcon fontSize="small" />
@@ -74,15 +74,15 @@ const QuantitySelection = ({ onQuantity, quantity }: IProps) => {
             quantity ? setCount(count) : setCount(0);
           }}
           sx={{
-            background: "#ddbea8",
+            background: "#a51d1d96",
             color: "#ffffff",
-            border: "1px solid #ffffff",
+            border: "1px solid #ffffff71",
             "&:hover": {
-              color: "#ddbea8",
-              border: "1px solid #ffffff",
+              color: "#a51d1d96",
+              border: "1px solid #ffffff7a",
             },
             "& .MuiTab-root.Mui-selected": {
-              border: "1px solid #ffffff", // צבע הטקסט כאשר התווית נבחרת
+              border: "1px solid #ffffff72", // צבע הטקסט כאשר התווית נבחרת
             },
           }}
         >
