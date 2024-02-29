@@ -1,8 +1,6 @@
 import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 
@@ -17,7 +15,7 @@ const Footer = () => {
     <BottomNavigation
       value={value}
       onChange={handleChange}
-      sx={{  background: "#273e47" }}
+      sx={{  background: "#273e47",height:'100%' }}
     >
       <BottomNavigationAction
         label="גלישה"

@@ -5,9 +5,6 @@ import PlaygroundSpeedDial from "../../components/plus/PlaygroundSpeedDial";
 import BasicTabs from "../../components/basicTabs/BasicTabs";
 import Footer from "../../components/footer/Footer";
 import { Outlet } from "react-router-dom";
-
-// import Img from "../../components/gallery/Img";
-import ImageCarousel from "../../components/gallery/ImageCarousel";
 import Gallery from "../../components/gallery/Gallery";
 import Whtasapp from "../../components/buttons/Whatsapp";
 
@@ -22,7 +19,7 @@ const Home = () => {
     <Box
       sx={{
         width: "100%",
-        minHeight: "100vh", // Ensure that the container takes up the full height of the viewport
+        minHeight: "100vh", 
         display: "flex",
         flexDirection: "column",
       }}
@@ -35,7 +32,7 @@ const Home = () => {
         sx={{
           background:
             "linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(221,190,168,0.9108018207282913) 100%)",
-          flex: "1", // Allow the content to grow to fill the remaining space
+          flex: "1", 
         }}
       >
         <Grid
@@ -45,7 +42,7 @@ const Home = () => {
           alignItems="center"
           width={"100%"}
           sx={{
-            background: "#ffffff",
+       
             mt: 22,
           }}
         >

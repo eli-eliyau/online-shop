@@ -78,10 +78,10 @@ const Product = () => {
               item
               width={"80%"}
               sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.5)", // Transparent white background
-                backdropFilter: "blur(5px)", // Blur effect
-                borderRadius: "15px", // Optional: Add border radius for a rounded look
-                padding: "20px", // Optional: Add padding for spacing
+                backgroundColor: "rgba(255, 255, 255, 0.5)",  
+                backdropFilter: "blur(5px)",  
+                borderRadius: "15px", 
+                padding: "20px", 
               }}
             >
               <Typography
