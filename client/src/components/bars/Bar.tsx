@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/img4.png";
 import CartButton from "../buttons/CartButton";
 import SearchInput from "./SearchInput";
 import { useRecoilValue } from "recoil";

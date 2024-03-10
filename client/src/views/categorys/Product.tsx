@@ -9,6 +9,7 @@ import { API_SERVER } from "../../App";
 import { IProduct } from "../../config/interface";
 import Img from "../../components/gallery/Img";
 import Title from "../../components/title/Title";
+import { LayoutGrid } from "../../components/gallery/layoutGrid";
 
 const Product = () => {
   const [product, setProduct] = useState<IProduct>();
@@ -52,10 +53,29 @@ const Product = () => {
       });
     }
   };
-
+const img = [
+  {
+    id: 1,
+    content:'123',
+    className: '',
+    thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_M6ZSxrdMfK0B3bJk43tmU1blRO1r_-pg&usqp=CAU'
+  },
+  {
+    id: 2,
+    content:'123',
+    className: '',
+    thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_M6ZSxrdMfK0B3bJk43tmU1blRO1r_-pg&usqp=CAU'
+  },
+  {
+    id: 3,
+    content:'123',
+    className: '',
+    thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_M6ZSxrdMfK0B3bJk43tmU1blRO1r_-pg&usqp=CAU'
+  }
+]
   return (
     <Box>
-      <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
+      <Grow in={true} style={{ transformOrigin: "0 0 0", }} timeout={1000}>
         <Grid
           container
           direction="row"
@@ -63,27 +83,29 @@ const Product = () => {
           sx={{ pt: 5, pb: 2 }}
         >
           <Grid item xs={6} >
-            <Title name={product?.name} />
-
+          
+          {/* <LayoutGrid cards={img}></LayoutGrid> */}
             <Img img={product?.img} />
           </Grid>
           <Grid
             container
             direction="column"
-            justifyContent="space-around"
+            justifyContent="space-between"
             alignItems="center"
             xs={6}
+            
           >
             <Grid
               item
               width={"80%"}
               sx={{
                 backgroundColor: "rgba(255, 255, 255, 0.5)",  
-                backdropFilter: "blur(5px)",  
+                backdropFilter: "blur(5px)", 
                 borderRadius: "15px", 
                 padding: "20px", 
               }}
             >
+                <Title name={product?.name} />
               <Typography
                 variant="h6"
                 sx={{

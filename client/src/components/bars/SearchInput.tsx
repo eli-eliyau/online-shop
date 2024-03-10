@@ -32,6 +32,7 @@ const SearchField = () => {
           >
             <SearchIcon />
           </IconButton>
+          
   );
 };
 

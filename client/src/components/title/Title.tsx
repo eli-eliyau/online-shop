@@ -8,9 +8,15 @@ interface IProps {
 const Title = ({ name = "" }: IProps) => {
   return (
     <Typography
-      variant="h4"
+      textAlign={"center"}
       sx={{
-        //   textShadow: " 2px 2px 5px #a51d1d96, 0px 7px 8px #ffffff",
+        fontSize: {
+          xs: "1.5rem",
+          sm: "2rem",
+          md: "2.5rem",
+          lg: "3rem",
+          xl: "3rem",
+        },
         fontWeight: "bold",
         mb: 2,
       }}

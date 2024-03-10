@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Grid, CardMedia, Box } from "@mui/material";
+import { Typography, Grid, CardMedia, Box, Grow } from "@mui/material";
 import QuantitySelection from "../buttons/QuantitySelection";
 import { useSetRecoilState } from "recoil";
 import { ICart, cart } from "../../atom";
@@ -51,12 +51,10 @@ const Cards = ({ data }: IProps) => {
     }
   };
 
-  
-
   const handleCategoryClick = (id: string) => {
-    const element = document.querySelector(".MuiBox-root:last-child"); 
+    const element = document.querySelector(".MuiBox-root:last-child");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      element.scrollIntoView({ behavior: "smooth", block: "end" });
     }
 
     !("categoryId" in data) && navigate(`/categorys/:${id}`);
@@ -64,60 +62,62 @@ const Cards = ({ data }: IProps) => {
   };
 
   return (
-    <Box
-      sx={{
-        
-        borderRadius: "15px",
-        background: "#ffffff",
-        height: "100%",
-        boxShadow: "10px 7px 17px -3px rgba(207,150,150,0.79)",
-      }}
-    >
-      <Box onClick={() => handleCategoryClick(data.id)}>
-        <CardMedia
-          component="img"
-          alt="תיאור תמונה"
-          sx={{
-            objectFit: "cover",
-            borderRadius: "15px 15px 0px 0px",
-            height: "auto",
-            width: "100%",
-          }}
-          src={`data:image/png;base64,${data.img}`}
-        />
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-around"
-          alignItems="center"
-          sx={{ p: 1 }}
-        >
-          <Typography
-            variant="inherit"
-            sx={{ fontWeight: "bold" }}
-            color={"#273e47"}
-            textAlign="center"
+    <Grow in={true} style={{ transformOrigin: "0 0 0" }} timeout={1000}>
+      <Box
+        sx={{
+          backdropFilter: "blur(5px)",
+          borderRadius: "15px",
+          background: "#ffffff",
+          height: "100%",
+          boxShadow: "10px 7px 17px -3px rgba(207,150,150,0.79)",
+        }}
+      >
+        <Box onClick={() => handleCategoryClick(data.id)}>
+          <CardMedia
+            component="img"
+            alt="תיאור תמונה"
+            sx={{
+              objectFit: "cover",
+              borderRadius: "15px 15px 0px 0px",
+              height: "auto",
+              width: "100%",
+            }}
+            src={`data:image/png;base64,${data.img}`}
+          />
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-around"
+            alignItems="center"
+            sx={{ p: 1 }}
           >
-            {data.name}
-          </Typography>
-
-          {"price" in data && (
             <Typography
               variant="inherit"
               sx={{ fontWeight: "bold" }}
               color={"#273e47"}
               textAlign="center"
             >
-              {`${data.price} $`}
+              {data.name}
             </Typography>
-          )}
-        </Grid>
+
+            {"price" in data && (
+              <Typography
+                variant="inherit"
+                sx={{ fontWeight: "bold" }}
+                color={"#273e47"}
+                textAlign="center"
+              >
+                {`${data.price} $`}
+              </Typography>
+            )}
+          </Grid>
+        </Box>
+        {"nameCategory" in data && <QuantitySelection onQuantity={addCart} />}
+        {"quantity" in data && (
+          <QuantitySelection onQuantity={addCart} quantity={data.quantity} />
+        )}
       </Box>
-      {"nameCategory" in data && <QuantitySelection onQuantity={addCart} />}
-      {"quantity" in data && (
-        <QuantitySelection onQuantity={addCart} quantity={data.quantity} />
-      )}
-    </Box>
+    </Grow>
   );
 };
 

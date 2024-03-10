@@ -46,16 +46,11 @@ const Products = () => {
       <Grid container spacing={2} ref={productsRef}>
         {products ? (
           products.map((e, i) => (
-            <Grow
-              key={i}
-              in={true}
-              style={{ transformOrigin: "0 0 0" }}
-              timeout={1000}
-            >
+            
               <GridContainer item xs={6} sm={4} md={3}>
                 <Cards data={e} />
               </GridContainer>
-            </Grow>
+            
           ))
         ) : (
           <Skeletons num={12} />
