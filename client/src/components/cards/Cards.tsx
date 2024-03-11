@@ -67,12 +67,15 @@ const Cards = ({ data }: IProps) => {
         sx={{
           backdropFilter: "blur(5px)",
           borderRadius: "15px",
-          background: "#ffffff",
+          background: "#ffffffa2",
           height: "100%",
+          ":hover":{
           boxShadow: "10px 7px 17px -3px rgba(207,150,150,0.79)",
+
+          }
         }}
       >
-        <Box onClick={() => handleCategoryClick(data.id)}>
+        <Box   onClick={() => handleCategoryClick(data.id)}>
           <CardMedia
             component="img"
             alt="תיאור תמונה"
